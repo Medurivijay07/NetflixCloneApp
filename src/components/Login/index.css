@@ -1,0 +1,124 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-main-container {
+  background-image: url('https://res.cloudinary.com/djcejfaxi/image/upload/v1728060484/netfilx_login_bg_su0qn9.png');
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.responsive-login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background-color: #0c0b10;
+  padding: 12px;
+  width: 456px;
+  height: 440px;
+  top: 292px;
+  left: 492px;
+  gap: 0px;
+  border-radius: 8px 0px 0px 0px;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-title {
+  width: 78px;
+  height: 40px;
+  top: 356px;
+  left: 681px;
+  gap: 0px;
+  color: #ffffff;
+  font-family: HK Grotesk;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-element {
+  width: 360px;
+  height: 40px;
+  top: 24px;
+  gap: 0px;
+  border-radius: 2px 0px 0px 0px;
+  background-color: #333333;
+  color: #e2e8f0;
+  outline: none;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: none;
+  padding: 10px;
+}
+
+.label-element {
+  color: #ffffff;
+}
+
+.login-button {
+  background-color: #e50914;
+  color: #ffffff;
+  width: 360px;
+  height: 40px;
+  gap: 0px;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #dc2626;
+}
+
+.movies-title {
+  width: 180px;
+  height: 52px;
+  top: 48px;
+  left: 165px;
+  gap: 0px;
+  color: #e50014;
+}
+
+@media screen and (max-width: 576px) {
+  .login-main-container {
+    background-image: none;
+    background-color: #131313;
+  }
+  .login-box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .input-element {
+    width: 100%;
+    height: 40px;
+    top: 24px;
+    gap: 0px;
+    border-radius: 2px 0px 0px 0px;
+    opacity: 0px;
+  }
+  .login-button {
+    width: 100%;
+  }
+}
