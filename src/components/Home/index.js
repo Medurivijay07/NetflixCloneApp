@@ -93,6 +93,14 @@ class Home extends Component {
     }
   }
 
+  onClickingTrendingRetry = () => {
+    this.getTrendingData()
+  }
+
+  onClickingOriginalsRetry = () => {
+    this.getOriginalsData()
+  }
+
   renderLoadingView = () => (
     <div className="loader-container" data-testid="loader">
       <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
@@ -101,7 +109,29 @@ class Home extends Component {
 
   renderFailureView = () => (
     <div className="failure-container">
-      <FiAlertTriangle className="" />
+      <FiAlertTriangle className="alert-triangle" />
+      <p className="error-message">Something went wrong. Please try again</p>
+      <button
+        type="button"
+        className="try-again-button"
+        onClick={this.onClickingTrendingRetry}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderFailureView = () => (
+    <div className="failure-container">
+      <FiAlertTriangle className="alert-triangle" />
+      <p className="error-message">Something went wrong. Please try again</p>
+      <button
+        type="button"
+        className="try-again-button"
+        onClick={this.onClickingOriginalsRetry}
+      >
+        Try Again
+      </button>
     </div>
   )
 

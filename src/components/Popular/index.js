@@ -1,19 +1,29 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
+import {FiAlertTriangle} from 'react-icons/fi'
 
 import './index.css'
 import Header from '../Header'
 import Footer from '../Footer'
 import PopularItem from '../PopularItem'
 
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  failure: 'FAILURE',
+  success: 'SUCCESS',
+  inprogress: 'INPROGRESS',
+}
+
 class Popular extends Component {
-  state = {popularData: []}
+  state = {popularData: [], apiStatus: apiStatusConstants.initial}
 
   componentDidMount() {
     this.getPopularData()
   }
 
   getPopularData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inprogress})
     const apiUrl = 'https://apis.ccbp.in/movies-app/popular-movies'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -34,8 +44,17 @@ class Popular extends Component {
         posterPath: movie.poster_path,
         title: movie.title,
       }))
-      this.setState({popularData: updatedData})
+      this.setState({
+        popularData: updatedData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
+  }
+
+  onClickingTryAgain = () => {
+    this.getPopularData()
   }
 
   renderPopularMovies = () => {
@@ -51,11 +70,45 @@ class Popular extends Component {
     )
   }
 
+  renderLoadingView = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="TailSpin" color="#D81F26" height={50} width={50} />
+    </div>
+  )
+
+  renderFailureView = () => (
+    <div className="failure-container">
+      <FiAlertTriangle className="alert-triangle" />
+      <p className="error-message">Something went wrong. Please try again</p>
+      <button
+        type="button"
+        className="try-again-button"
+        onClick={this.onClickingTryAgain}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderPopularMoviesUsingSwitch = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderPopularMovies()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      case apiStatusConstants.inprogress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <div className="popular-container">
         <Header />
-        {this.renderPopularMovies()}
+        {this.renderPopularMoviesUsingSwitch()}
         <Footer />
       </div>
     )

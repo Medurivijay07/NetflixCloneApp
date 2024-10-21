@@ -1,19 +1,26 @@
 import {IoMdSearch} from 'react-icons/io'
+import {Link} from 'react-router-dom'
 import './index.css'
 
 const Header = () => (
   <div className="header-container">
     <ul className="header-list">
       <div className="left-header-container">
-        <li>
-          <h1 className="header-title">MOVIES</h1>
-        </li>
-        <li>
-          <p className="home-link">Home</p>
-        </li>
-        <li>
-          <p className="popular-link">Popular</p>
-        </li>
+        <Link to="/" className="link-item">
+          <li>
+            <h1 className="header-title">MOVIES</h1>
+          </li>
+        </Link>
+        <Link to="/" className="link-item">
+          <li>
+            <p className="home-link">Home</p>
+          </li>
+        </Link>
+        <Link to="/popular" className="link-item">
+          <li>
+            <p className="popular-link">Popular</p>
+          </li>
+        </Link>
       </div>
       <div className="right-header-container">
         <li>
