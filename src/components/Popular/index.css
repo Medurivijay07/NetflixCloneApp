@@ -1,0 +1,14 @@
+.popular-container {
+  min-height: 100vh;
+  background-color: #131313;
+}
+
+.Popular-movies-container {
+  width: 100%;
+}
+
+.movies-list-popular {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}

@@ -1,0 +1,40 @@
+.failure-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.trending-heading {
+  color: #ffffff;
+}
+
+.bottom-container {
+  background-color: #131313;
+  min-height: 50vh;
+  padding: 30px;
+}
+
+.each-trending-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  padding: 10px;
+}
+
+.trending-image {
+  width: 100%;
+  height: auto;
+}
+
+.originals-heading {
+  color: #ffffff;
+}
+
+.loader-container {
+  display: flex;
+  min-height: 30vh;
+  justify-content: center;
+  align-items: center;
+}

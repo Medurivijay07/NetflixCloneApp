@@ -1,0 +1,46 @@
+.header-container {
+  opacity: 0.6;
+  background-color: #131313;
+  height: 15vh;
+  padding: 10px;
+}
+.header-title {
+  color: #e50014;
+  margin-right: 20px;
+}
+
+.header-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-header-container {
+  display: flex;
+  align-items: center;
+}
+
+.home-link {
+  color: #ffffff;
+  margin-right: 15px;
+}
+
+.popular-link {
+  color: #ffffff;
+  margin-right: 15px;
+}
+
+.right-header-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+.header-profile {
+  margin-right: 20px;
+}
