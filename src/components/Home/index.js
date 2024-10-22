@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+import {Redirect} from 'react-router-dom'
 import {FiAlertTriangle} from 'react-icons/fi'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -23,6 +24,7 @@ class Home extends Component {
     trendingData: [],
     originalsApiStatus: apiStatusConstants.initial,
     trendingApiStatus: apiStatusConstants.initial,
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -89,7 +91,10 @@ class Home extends Component {
         originalsApiStatus: apiStatusConstants.success,
       })
     } else {
-      this.setState({originalsApiStatus: apiStatusConstants.failure})
+      this.setState({
+        originalsApiStatus: apiStatusConstants.failure,
+        isLoading: false,
+      })
     }
   }
 
@@ -107,7 +112,7 @@ class Home extends Component {
     </div>
   )
 
-  renderFailureView = () => (
+  renderTrendingFailureView = () => (
     <div className="failure-container">
       <FiAlertTriangle className="alert-triangle" />
       <p className="error-message">Something went wrong. Please try again</p>
@@ -136,23 +141,24 @@ class Home extends Component {
   )
 
   renderHomePoster = () => {
-    const {originalsData} = this.state
-    console.log(originalsData)
+    const {originalsData, isLoading} = this.state
+
+    if (originalsData.length === 0 || isLoading) {
+      return this.renderLoadingView()
+    }
 
     const randomIndex = Math.floor(Math.random() * originalsData.length)
     const {posterPath} = originalsData[randomIndex]
 
-    const divStyle = {
-      backgroundImage: `url('${posterPath}')`,
-      backgroundSize: 'cover',
-      width: '100%',
-      height: '50vh',
-    }
-
     return (
-      <div style={divStyle}>
-        <Header />
-      </div>
+      <>
+        <div
+          style={{backgroundImage: `url(${posterPath})`}}
+          className="background-poster"
+        >
+          <Header />
+        </div>
+      </>
     )
   }
 
@@ -189,7 +195,7 @@ class Home extends Component {
       case apiStatusConstants.success:
         return this.renderTrendingVideos()
       case apiStatusConstants.failure:
-        return this.renderFailureView()
+        return this.renderTrendingFailureView()
       case apiStatusConstants.inprogress:
         return this.renderLoadingView()
       default:
@@ -237,6 +243,10 @@ class Home extends Component {
   }
 
   render() {
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken === undefined) {
+      return <Redirect to="/login" />
+    }
     return (
       <>
         <div className="bottom-container">

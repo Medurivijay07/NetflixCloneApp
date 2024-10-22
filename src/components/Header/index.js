@@ -23,16 +23,22 @@ const Header = () => (
         </Link>
       </div>
       <div className="right-header-container">
-        <li>
-          <IoMdSearch className="search-icon" />
-        </li>
-        <li>
-          <img
-            src="https://res.cloudinary.com/djcejfaxi/image/upload/v1728882803/Avatar_sepbqh.png"
-            alt=""
-            className="header-profile"
-          />
-        </li>
+        <Link to="/search">
+          <li>
+            <button type="button" className="search-button">
+              <IoMdSearch className="search-icon" />
+            </button>
+          </li>
+        </Link>
+        <Link to="/account">
+          <li>
+            <img
+              src="https://res.cloudinary.com/djcejfaxi/image/upload/v1728882803/Avatar_sepbqh.png"
+              alt=""
+              className="header-profile"
+            />
+          </li>
+        </Link>
       </div>
     </ul>
   </div>

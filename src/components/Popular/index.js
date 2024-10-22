@@ -1,7 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import {FiAlertTriangle} from 'react-icons/fi'
 
 import './index.css'
 import Header from '../Header'
@@ -78,7 +77,10 @@ class Popular extends Component {
 
   renderFailureView = () => (
     <div className="failure-container">
-      <FiAlertTriangle className="alert-triangle" />
+      <img
+        src="https://res.cloudinary.com/djcejfaxi/image/upload/v1729593311/Group_oonwsy.png"
+        alt="failure view"
+      />
       <p className="error-message">Something went wrong. Please try again</p>
       <button
         type="button"

@@ -54,3 +54,10 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+.background-poster {
+  height: 40vh;
+  width: 100%;
+  background-size: cover;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/movies-app/grindhouse-movie-poster.png');
+}

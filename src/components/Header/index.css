@@ -39,6 +39,7 @@
 .search-icon {
   color: #ffffff;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .header-profile {
@@ -47,4 +48,11 @@
 
 .link-item {
   text-decoration: none;
+}
+
+.search-button {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }

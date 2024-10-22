@@ -1,4 +1,4 @@
-import {FaGoogle, FaTwitter, FaInstagramSquare, FaYoutube} from 'react-icons/fa'
+import {FaGoogle, FaTwitter, FaInstagram, FaYoutube} from 'react-icons/fa'
 import './index.css'
 
 const Footer = () => (
@@ -6,10 +6,10 @@ const Footer = () => (
     <div className="footer-icons-container">
       <FaGoogle className="google-icon" />
       <FaTwitter className="google-icon" />
-      <FaInstagramSquare className="google-icon" />
+      <FaInstagram className="google-icon" />
       <FaYoutube className="google-icon" />
     </div>
-    <h1 className="contactus-style">Contact Us</h1>
+    <p className="contactus-style">Contact Us</p>
   </div>
 )
 

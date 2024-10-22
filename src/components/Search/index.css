@@ -1,0 +1,45 @@
+.search-container {
+  min-height: 100vh;
+  background-color: #131313;
+}
+.searchItem-container {
+  width: 264px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  margin-right: 15px;
+  border-radius: 7px;
+}
+
+.search-input {
+  width: 80%;
+  height: 40px;
+  background-color: transparent;
+  outline: none;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.search-movies-container {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+}
+
+.no-search-results-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.empty-search {
+  color: #ffffff;
+  font-weight: 500;
+}

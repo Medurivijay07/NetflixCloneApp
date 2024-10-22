@@ -1,0 +1,46 @@
+.account-main-container {
+  min-height: 100vh;
+  background-color: #131313;
+}
+
+.account-container {
+  background-color: #ffffff;
+  min-height: 70vh;
+  padding: 40px;
+}
+
+.membership-title {
+  color: #94a3b8;
+  margin-right: 10px;
+}
+
+.details {
+  display: flex;
+}
+
+.ultra-hd {
+  border: 1px solid #1e293b;
+  padding: 3px;
+  margin-left: 10px;
+}
+
+.premium-container {
+  display: flex;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logout-button {
+  background-color: #e50914;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #ffffff;
+  border-radius: 7px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
