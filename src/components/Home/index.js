@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import {FiAlertTriangle} from 'react-icons/fi'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -89,11 +89,11 @@ class Home extends Component {
       this.setState({
         originalsData: updatedData,
         originalsApiStatus: apiStatusConstants.success,
+        isLoading: false,
       })
     } else {
       this.setState({
         originalsApiStatus: apiStatusConstants.failure,
-        isLoading: false,
       })
     }
   }
@@ -114,7 +114,10 @@ class Home extends Component {
 
   renderTrendingFailureView = () => (
     <div className="failure-container">
-      <FiAlertTriangle className="alert-triangle" />
+      <img
+        src="https://res.cloudinary.com/djcejfaxi/image/upload/v1729593311/Group_oonwsy.png"
+        alt="failure view"
+      />
       <p className="error-message">Something went wrong. Please try again</p>
       <button
         type="button"
@@ -128,7 +131,10 @@ class Home extends Component {
 
   renderFailureView = () => (
     <div className="failure-container">
-      <FiAlertTriangle className="alert-triangle" />
+      <img
+        src="https://res.cloudinary.com/djcejfaxi/image/upload/v1729593311/Group_oonwsy.png"
+        alt="failure view"
+      />
       <p className="error-message">Something went wrong. Please try again</p>
       <button
         type="button"
@@ -143,20 +149,31 @@ class Home extends Component {
   renderHomePoster = () => {
     const {originalsData, isLoading} = this.state
 
-    if (originalsData.length === 0 || isLoading) {
+    if (isLoading) {
       return this.renderLoadingView()
     }
 
     const randomIndex = Math.floor(Math.random() * originalsData.length)
-    const {posterPath} = originalsData[randomIndex]
+    const {posterPath, title, overview} = originalsData[randomIndex]
 
     return (
       <>
         <div
-          style={{backgroundImage: `url(${posterPath})`}}
-          className="background-poster"
+          style={{
+            backgroundImage: `url(${posterPath})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            height: '100vh',
+          }}
         >
           <Header />
+          <div className="home-poster-content">
+            <h1>{title}</h1>
+            <p>{overview}</p>
+            <button type="button" className="play-button">
+              Play
+            </button>
+          </div>
         </div>
       </>
     )
@@ -176,13 +193,15 @@ class Home extends Component {
       <div className="slider-container">
         <Slider {...settings}>
           {trendingData.map(movie => (
-            <div key={movie.id} className="each-trending-item">
-              <img
-                src={movie.backdropPath}
-                alt={movie.title}
-                className="trending-image"
-              />
-            </div>
+            <Link to={`/movies/${movie.id}`} className="each-trending-item">
+              <div key={movie.id}>
+                <img
+                  src={movie.backdropPath}
+                  alt={movie.title}
+                  className="trending-image"
+                />
+              </div>
+            </Link>
           ))}
         </Slider>
       </div>
@@ -230,13 +249,15 @@ class Home extends Component {
     return (
       <Slider {...settings}>
         {originalsData.map(movie => (
-          <div key={movie.id} className="each-trending-item">
-            <img
-              src={movie.backdropPath}
-              alt={movie.title}
-              className="trending-image"
-            />
-          </div>
+          <Link to={`/movies/${movie.id}`} className="each-trending-item">
+            <div key={movie.id}>
+              <img
+                src={movie.backdropPath}
+                alt={movie.title}
+                className="trending-image"
+              />
+            </div>
+          </Link>
         ))}
       </Slider>
     )
@@ -249,6 +270,7 @@ class Home extends Component {
     }
     return (
       <>
+        {this.renderHomePoster()}
         <div className="bottom-container">
           <h1 className="trending-heading">Trending Now</h1>
           {this.renderTrendingVideosUsingSwitch()}

@@ -55,9 +55,19 @@
   border-radius: 5px;
 }
 
-.background-poster {
-  height: 40vh;
-  width: 100%;
-  background-size: cover;
-  background-image: url('https://assets.ccbp.in/frontend/react-js/movies-app/grindhouse-movie-poster.png');
+.home-poster-content {
+  color: #ffffff;
+  padding: 30px;
+  width: 40%;
+}
+
+.play-button {
+  background-color: #ffffff;
+  border-radius: 7px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }

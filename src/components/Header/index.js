@@ -8,7 +8,11 @@ const Header = () => (
       <div className="left-header-container">
         <Link to="/" className="link-item">
           <li>
-            <h1 className="header-title">MOVIES</h1>
+            <img
+              src="https://res.cloudinary.com/djcejfaxi/image/upload/v1728881201/Group_7399_d4jhtx.png"
+              alt="website logo"
+              className="logo-image"
+            />
           </li>
         </Link>
         <Link to="/" className="link-item">
@@ -34,7 +38,7 @@ const Header = () => (
           <li>
             <img
               src="https://res.cloudinary.com/djcejfaxi/image/upload/v1728882803/Avatar_sepbqh.png"
-              alt=""
+              alt="profile"
               className="header-profile"
             />
           </li>
