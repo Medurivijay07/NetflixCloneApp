@@ -29,7 +29,11 @@ const Header = () => (
       <div className="right-header-container">
         <Link to="/search">
           <li>
-            <button type="button" className="search-button">
+            <button
+              type="button"
+              className="search-button"
+              data-testid="searchButton"
+            >
               <IoMdSearch className="search-icon" />
             </button>
           </li>

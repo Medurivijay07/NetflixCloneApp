@@ -24,7 +24,7 @@ class Home extends Component {
     trendingData: [],
     originalsApiStatus: apiStatusConstants.initial,
     trendingApiStatus: apiStatusConstants.initial,
-    isLoading: true,
+    posterApiStatus: apiStatusConstants.initial,
   }
 
   componentDidMount() {
@@ -63,7 +63,10 @@ class Home extends Component {
   }
 
   getOriginalsData = async () => {
-    this.setState({originalsApiStatus: apiStatusConstants.inprogress})
+    this.setState({
+      originalsApiStatus: apiStatusConstants.inprogress,
+      posterApiStatus: apiStatusConstants.inprogress,
+    })
 
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = 'https://apis.ccbp.in/movies-app/originals'
@@ -89,11 +92,12 @@ class Home extends Component {
       this.setState({
         originalsData: updatedData,
         originalsApiStatus: apiStatusConstants.success,
-        isLoading: false,
+        posterApiStatus: apiStatusConstants.success,
       })
     } else {
       this.setState({
         originalsApiStatus: apiStatusConstants.failure,
+        posterApiStatus: apiStatusConstants.failure,
       })
     }
   }
@@ -129,7 +133,7 @@ class Home extends Component {
     </div>
   )
 
-  renderFailureView = () => (
+  rendeOriginalsFailureView = () => (
     <div className="failure-container">
       <img
         src="https://res.cloudinary.com/djcejfaxi/image/upload/v1729593311/Group_oonwsy.png"
@@ -177,6 +181,20 @@ class Home extends Component {
         </div>
       </>
     )
+  }
+
+  renderPosterUsingSwitch = () => {
+    const {posterApiStatus} = this.state
+    switch (posterApiStatus) {
+      case apiStatusConstants.success:
+        return this.renderHomePoster()
+      case apiStatusConstants.failure:
+        return this.rendeOriginalsFailureView()
+      case apiStatusConstants.inprogress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
   }
 
   renderTrendingVideos = () => {
@@ -228,7 +246,7 @@ class Home extends Component {
       case apiStatusConstants.success:
         return this.renderOriginalVideos()
       case apiStatusConstants.failure:
-        return this.renderFailureView()
+        return this.rendeOriginalsFailureView()
       case apiStatusConstants.inprogress:
         return this.renderLoadingView()
       default:
@@ -270,7 +288,7 @@ class Home extends Component {
     }
     return (
       <>
-        {this.renderHomePoster()}
+        {this.renderPosterUsingSwitch()}
         <div className="bottom-container">
           <h1 className="trending-heading">Trending Now</h1>
           {this.renderTrendingVideosUsingSwitch()}

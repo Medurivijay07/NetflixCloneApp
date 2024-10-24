@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
@@ -84,9 +85,17 @@ class Login extends Component {
   render() {
     const {showErrMsg, errorMsg} = this.state
 
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div className="login-main-container">
-        <h1 className="movies-title">MOVIES</h1>
+        <img
+          src="https://res.cloudinary.com/djcejfaxi/image/upload/v1728881201/Group_7399_d4jhtx.png"
+          alt="website logo"
+        />
         <div className="responsive-login-container">
           <div className="login-box">
             <h1 className="login-title">Login</h1>

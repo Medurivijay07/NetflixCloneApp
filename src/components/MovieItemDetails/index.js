@@ -2,6 +2,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
+import PopularItem from '../PopularItem'
 import Footer from '../Footer'
 import './index.css'
 
@@ -77,6 +78,22 @@ class MovieItemDetails extends Component {
     this.getMovieDetails()
   }
 
+  renderSimilarMovies = () => {
+    const {movieDetails} = this.state
+    const {similarMovies} = movieDetails
+    console.log(similarMovies)
+    return (
+      <div className="similar-container">
+        <h1 className="similar-movies-title">More like this</h1>
+        <ul className="similar-movies-container">
+          {similarMovies.map(movie => (
+            <PopularItem key={movie.id} movie={movie} />
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
   renderBottomContainer = () => {
     const {movieDetails} = this.state
     const {
@@ -89,7 +106,21 @@ class MovieItemDetails extends Component {
       releaseDate,
       voteAverage,
       voteCount,
+      runtime,
+      adult,
     } = movieDetails
+
+    const formatToHoursAndMinutes = time => {
+      const hours = Math.floor(time / 60)
+      const minutes = time % 60
+
+      return `${hours}h ${minutes}m`
+    }
+
+    const formatedTime = formatToHoursAndMinutes(runtime)
+
+    const date = new Date(releaseDate)
+    const year = date.getFullYear()
 
     return (
       <>
@@ -103,6 +134,11 @@ class MovieItemDetails extends Component {
           <Header />
           <div className="poster-content">
             <h1>{title}</h1>
+            <div className="runtime-year-container">
+              <p>{formatedTime}</p>
+              <p className="adult-style">{adult ? 'A' : 'U'}</p>
+              <p>{year}</p>
+            </div>
             <p>{overview}</p>
             <button type="button" className="play-button">
               Play
@@ -136,6 +172,7 @@ class MovieItemDetails extends Component {
             <p>{releaseDate}</p>
           </li>
         </ul>
+        {this.renderSimilarMovies()}
       </>
     )
   }

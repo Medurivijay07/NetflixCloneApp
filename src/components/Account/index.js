@@ -1,8 +1,15 @@
+import Cookies from 'js-cookie'
 import Header from '../Header'
 import Footer from '../Footer'
 import './index.css'
 
-const Account = () => {
+const Account = props => {
+  const onClickLogout = () => {
+    const {history} = props
+    Cookies.remove('jwt_token')
+    history.replace('/login')
+  }
+
   const renderAccountDetails = () => (
     <div className="account-container">
       <h1>Account</h1>
@@ -22,7 +29,7 @@ const Account = () => {
       </div>
       <hr />
       <div className="button-container">
-        <button type="button" className="logout-button">
+        <button type="button" className="logout-button" onClick={onClickLogout}>
           Logout
         </button>
       </div>
