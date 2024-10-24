@@ -76,7 +76,7 @@ class Search extends Component {
           alt="no movies"
         />
         <p className="empty-search">
-          Your search for {searchInput} didnot find any matches.
+          Your search for {searchInput} did not find any matches.
         </p>
       </div>
     )
@@ -122,7 +122,7 @@ class Search extends Component {
         src="https://res.cloudinary.com/djcejfaxi/image/upload/v1729593311/Group_oonwsy.png"
         alt="failure view"
       />
-      <h1 className="error-message">Something went wrong. Please try again</h1>
+      <p className="error-message">Something went wrong. Please try again</p>
       <button
         type="button"
         className="try-again-button"

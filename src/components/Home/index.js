@@ -214,7 +214,7 @@ class Home extends Component {
             <Link to={`/movies/${movie.id}`} className="each-trending-item">
               <div key={movie.id}>
                 <img
-                  src={movie.backdropPath}
+                  src={movie.posterPath}
                   alt={movie.title}
                   className="trending-image"
                 />
@@ -270,7 +270,7 @@ class Home extends Component {
           <Link to={`/movies/${movie.id}`} className="each-trending-item">
             <div key={movie.id}>
               <img
-                src={movie.backdropPath}
+                src={movie.posterPath}
                 alt={movie.title}
                 className="trending-image"
               />

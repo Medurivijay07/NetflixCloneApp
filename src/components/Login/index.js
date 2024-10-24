@@ -94,7 +94,7 @@ class Login extends Component {
       <div className="login-main-container">
         <img
           src="https://res.cloudinary.com/djcejfaxi/image/upload/v1728881201/Group_7399_d4jhtx.png"
-          alt="website logo"
+          alt="login website logo"
         />
         <div className="responsive-login-container">
           <div className="login-box">

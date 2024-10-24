@@ -59,13 +59,11 @@ class Popular extends Component {
   renderPopularMovies = () => {
     const {popularData} = this.state
     return (
-      <div className="Popular-movies-container">
-        <ul className="movies-list-popular">
-          {popularData.map(movie => (
-            <PopularItem key={movie.id} movie={movie} />
-          ))}
-        </ul>
-      </div>
+      <ul className="movies-list-popular">
+        {popularData.map(movie => (
+          <PopularItem key={movie.id} movie={movie} />
+        ))}
+      </ul>
     )
   }
 

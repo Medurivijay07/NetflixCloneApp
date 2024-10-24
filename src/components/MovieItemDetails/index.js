@@ -136,8 +136,8 @@ class MovieItemDetails extends Component {
             <h1>{title}</h1>
             <div className="runtime-year-container">
               <p>{formatedTime}</p>
-              <p className="adult-style">{adult ? 'A' : 'U'}</p>
-              <p>{year}</p>
+              <p className="adult-style">{adult ? 'A' : 'U/A'}</p>
+              <p className="year">{year}</p>
             </div>
             <p>{overview}</p>
             <button type="button" className="play-button">
@@ -150,13 +150,13 @@ class MovieItemDetails extends Component {
           <li className="genre-container">
             <h1 className="genre-title-color">Genres</h1>
             {genres.map(genre => (
-              <p>{genre.name}</p>
+              <p key={genre.id}>{genre.name}</p>
             ))}
           </li>
           <li className="audio-container">
             <h1 className="genre-title-color">Audio Available</h1>
             {spokenLanguages.map(language => (
-              <p>{language.englishName}</p>
+              <p key={language.id}>{language.englishName}</p>
             ))}
           </li>
           <li className="rating-container">
